@@ -1,0 +1,35 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+.container {
+  margin: 15px auto;
+  width: 156px;
+}
+.game {
+  display: flex;
+  flex-wrap: wrap;
+  width: 156px;
+  border: solid 1px black;
+}
+.tile {
+  background: #bada55;
+  height: 50px;
+  width: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: solid 1px black;
+}
+.active {
+  background: red;
+}
+.buttons {
+  display: flex;
+  margin-top: 15px;
+  margin-left: 32px;
+}
+.updown {
+  display: flex;
+  flex-direction: column;
+}
