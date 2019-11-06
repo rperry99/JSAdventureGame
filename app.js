@@ -9,7 +9,7 @@ let gameCanvas = document.getElementById("game");
 let playerSpace = 1;
 
 // The number of tiles on the map
-const tiles = 64;
+const tiles = 25;
 
 // Get the square root to make the width of the game dynamic so it's always a square
 let tilesPerRow = Math.sqrt(tiles);
@@ -42,12 +42,13 @@ function MakeActive(nextSpace) {
     }
   }
   console.log(nextSpace);
+  console.log(17 % 8);
 }
 
 //When the user presses the left button
 function MoveLeft() {
   //If the player is on the far right already, don't move (they hit a wall), else, move.
-  if (playerSpace === 1 || playerSpace === 4 || playerSpace === 7) {
+  if (playerSpace % tilesPerRow === 1) {
     return;
   } else {
     playerSpace -= 1;
@@ -56,25 +57,26 @@ function MoveLeft() {
 }
 //When the user presses the up button
 function MoveUp() {
-  if (playerSpace === 1 || playerSpace === 2 || playerSpace === 3) {
+  if (playerSpace <= tilesPerRow) {
     return;
   } else {
-    playerSpace -= 3;
+    playerSpace -= tilesPerRow;
     MakeActive(playerSpace);
   }
 }
 //When the user presses the down button
 function MoveDown() {
-  if (playerSpace === 7 || playerSpace === 8 || playerSpace === 9) {
+  //If the player is greater than the first tile in the last row and less than the total number of tiles
+  if (playerSpace >= tiles - tilesPerRow && playerSpace <= tiles) {
     return;
   } else {
-    playerSpace += 3;
+    playerSpace += tilesPerRow;
     MakeActive(playerSpace);
   }
 }
 //When the user presses the right button
 function MoveRight() {
-  if (playerSpace === 3 || playerSpace === 6 || playerSpace === 9) {
+  if (playerSpace % tilesPerRow === 0) {
     return;
   } else {
     playerSpace += 1;
