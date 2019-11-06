@@ -26,8 +26,13 @@
 }
 .buttons {
   display: flex;
-  margin-top: 15px;
-  margin-left: 32px;
+  align-items: center;
+  justify-content: center;
+  margin: 15px auto;
+}
+.buttons button {
+  height: 50px;
+  width: 50px;
 }
 .updown {
   display: flex;
