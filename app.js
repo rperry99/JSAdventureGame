@@ -34,6 +34,7 @@ let tileWidth = singleTile.offsetWidth - 2;
 let gameWidth = tileWidth * tilesPerRow + tilesPerRow * 2;
 gameCanvas.style.width = `${gameWidth}px`;
 
+// Attach class to mark the "active" player as well as set the classes for the remaining tiles and the unwalkable one.
 function MakeActive(nextSpace) {
   let boxesNodeList = document.querySelectorAll("#game div");
   for (let i = 1; i <= boxesNodeList.length; i++) {
