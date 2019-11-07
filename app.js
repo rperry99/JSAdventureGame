@@ -15,11 +15,7 @@ const tiles = 64;
 let tilesPerRow = Math.sqrt(tiles);
 
 // Create the board
-for (let i = 1; i <= tiles; i++) {
-  var tile = document.createElement("div");
-  tile.innerHTML = i;
-  gameCanvas.appendChild(tile);
-}
+CreateBoard();
 
 // Generate random tiles that the user cannot walk on.
 let randomUnwalkable = Math.floor(Math.random() * tiles + 1);
@@ -33,6 +29,15 @@ let tileWidth = singleTile.offsetWidth - 2;
 // gameWidth = the width of a row of tiles plus the extra space added by the border
 let gameWidth = tileWidth * tilesPerRow + tilesPerRow * 2;
 gameCanvas.style.width = `${gameWidth}px`;
+
+// Create board function
+function CreateBoard() {
+  for (let i = 1; i <= tiles; i++) {
+    var tile = document.createElement("div");
+    tile.innerHTML = i;
+    gameCanvas.appendChild(tile);
+  }
+}
 
 // Attach class to mark the "active" player as well as set the classes for the remaining tiles and the unwalkable one.
 function MakeActive(nextSpace) {
