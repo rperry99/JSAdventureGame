@@ -41,3 +41,9 @@ Got rid of all the commented out HTML. Made each button so it doesn't matter how
 I added a random tile that becomes unwalkable, where the player cannot walk on it or through it. I also turned the part of code that creates the board into a function. That should help in the future if I want to make the user able to change the size of the board.
 
 ---
+
+#### 11/7/19
+
+Fixed a bug where the user can't go down to the last square
+
+---
