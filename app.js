@@ -81,7 +81,7 @@ function MoveUp() {
 function MoveDown() {
   //If the player is greater than the first tile in the last row and less than the total number of tiles
   if (
-    (playerSpace >= tiles - tilesPerRow && playerSpace <= tiles) ||
+    playerSpace > tiles - tilesPerRow ||
     playerSpace + tilesPerRow === randomUnwalkable
   ) {
     return;
