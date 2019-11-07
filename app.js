@@ -9,7 +9,7 @@ let gameCanvas = document.getElementById("game");
 let playerSpace = 1;
 
 // The number of tiles on the map
-const tiles = 25;
+const tiles = 64;
 
 // Get the square root to make the width of the game dynamic so it's always a square
 let tilesPerRow = Math.sqrt(tiles);
@@ -20,6 +20,9 @@ for (let i = 1; i <= tiles; i++) {
   tile.innerHTML = i;
   gameCanvas.appendChild(tile);
 }
+
+// Generate random tiles that the user cannot walk on.
+let randomUnwalkable = Math.floor(Math.random() * tiles + 1);
 
 // Create the active player
 MakeActive(playerSpace);
@@ -37,18 +40,19 @@ function MakeActive(nextSpace) {
     if (i === nextSpace) {
       boxesNodeList[nextSpace - 1].classList.add("active");
       boxesNodeList[nextSpace - 1].classList.add("tile");
+    } else if (i === randomUnwalkable) {
+      boxesNodeList[i - 1].classList.add("tile");
+      boxesNodeList[i - 1].classList.add("unwalkable");
     } else {
       boxesNodeList[i - 1].setAttribute("class", "tile");
     }
   }
-  console.log(nextSpace);
-  console.log(17 % 8);
 }
 
 //When the user presses the left button
 function MoveLeft() {
   //If the player is on the far right already, don't move (they hit a wall), else, move.
-  if (playerSpace % tilesPerRow === 1) {
+  if (playerSpace % tilesPerRow === 1 || playerSpace - 1 === randomUnwalkable) {
     return;
   } else {
     playerSpace -= 1;
@@ -57,7 +61,10 @@ function MoveLeft() {
 }
 //When the user presses the up button
 function MoveUp() {
-  if (playerSpace <= tilesPerRow) {
+  if (
+    playerSpace <= tilesPerRow ||
+    playerSpace - tilesPerRow === randomUnwalkable
+  ) {
     return;
   } else {
     playerSpace -= tilesPerRow;
@@ -67,7 +74,10 @@ function MoveUp() {
 //When the user presses the down button
 function MoveDown() {
   //If the player is greater than the first tile in the last row and less than the total number of tiles
-  if (playerSpace >= tiles - tilesPerRow && playerSpace <= tiles) {
+  if (
+    (playerSpace >= tiles - tilesPerRow && playerSpace <= tiles) ||
+    playerSpace + tilesPerRow === randomUnwalkable
+  ) {
     return;
   } else {
     playerSpace += tilesPerRow;
@@ -76,7 +86,7 @@ function MoveDown() {
 }
 //When the user presses the right button
 function MoveRight() {
-  if (playerSpace % tilesPerRow === 0) {
+  if (playerSpace % tilesPerRow === 0 || playerSpace + 1 === randomUnwalkable) {
     return;
   } else {
     playerSpace += 1;

@@ -9,7 +9,6 @@
 #game {
   display: flex;
   flex-wrap: wrap;
-  /* width: 312px; */
   border: solid 1px black;
 }
 .tile {
@@ -23,6 +22,9 @@
 }
 .active {
   background: red;
+}
+.unwalkable {
+  background: black;
 }
 .buttons {
   display: flex;
