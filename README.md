@@ -35,3 +35,9 @@ Make the board dynamic. Now by changing the "tiles" variable, you can set how bi
 Got rid of all the commented out HTML. Made each button so it doesn't matter how big the board is, the user won't be able to walk off of the board.
 
 ---
+
+#### 11/6/19
+
+I added a random tile that becomes unwalkable, where the player cannot walk on it or through it. I also turned the part of code that creates the board into a function. That should help in the future if I want to make the user able to change the size of the board.
+
+---
