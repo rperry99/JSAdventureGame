@@ -9,7 +9,7 @@ let gameCanvas = document.getElementById("game");
 let playerSpace = 1;
 
 // The number of tiles on the map
-const tiles = 64;
+const tiles = 81;
 
 // Get the square root to make the width of the game dynamic so it's always a square
 let tilesPerRow = Math.sqrt(tiles);
